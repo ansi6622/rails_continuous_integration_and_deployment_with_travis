@@ -1,0 +1,17 @@
+# You can validate this file at http://lint.travis-ci.org/
+language: ruby
+# set the version of Ruby
+rvm:
+  - 2.1.1
+# make sure things are set up before the build runs
+# See http://docs.travis-ci.com/user/using-postgresql/ for details
+# on using Postgres on Travis.
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+# run the build, making sure you use the gems in your bundle
+# see http://bundler.io/v1.6/man/bundle-exec.1.html for all
+# of the gory details.
+script:
+  - bundle exec rake spec
