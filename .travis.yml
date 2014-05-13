@@ -15,3 +15,12 @@ before_script:
 # of the gory details.
 script:
   - bundle exec rake spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: WYeiMmB164uobBNgews4pGJEx/fHzO448Y4kD4yrHpifTNz9cqSKhdpE67SgdoQ1RBii24JPquqZjaSIx9jdsZiWy/MMz4DxvA6eugbn2FWDVDBWHctBeBL3O96pJz2/JHCH2gi4j27tAALXWMMqnZfSTpEndZOPa1uIGHFsyyM=
+  app: glacial-sands-5713
+  on:
+    repo: gSchool/rails_continuous_integration_and_deployment_with_travis
+  run:
+    - "bundle exec rake db:migrate"
